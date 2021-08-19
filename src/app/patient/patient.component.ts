@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PatientService} from "./patient.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {Patient} from "./patient";
+import {FormGroup, FormControl} from "@angular/forms";
+import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-patient',
@@ -9,7 +11,17 @@ import {Patient} from "./patient";
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  public patients: Patient[] | null = [];
+  patients: Patient[] | null = [];
+
+  patientForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    pesel: new FormControl(''),
+    street: new FormControl(''),
+    number: new FormControl(''),
+    city: new FormControl(''),
+    zipCode: new FormControl('')
+  })
 
   constructor(private patientService: PatientService) { }
 

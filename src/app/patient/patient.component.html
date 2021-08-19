@@ -62,30 +62,30 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="patientForm">
           <div class="mb-3">
             <label for="firstName" class="form-label">Imię</label>
-            <input type="text" class="form-control" id="firstName">
+            <input type="text" class="form-control" id="firstName" formControlName="firstName">
           </div>
           <div class="mb-3">
             <label for="lastName" class="form-label">Nazwisko</label>
-            <input type="text" class="form-control" id="lastName">
+            <input type="text" class="form-control" id="lastName" formControlName="lastName">
           </div>
           <div class="mb-3">
             <label for="pesel" class="form-label">PESEL</label>
-            <input type="text" class="form-control" id="pesel">
+            <input type="text" class="form-control" id="pesel" formControlName="pesel">
           </div>
           <div class="mb-3">
             <label for="street" class="form-label">Ulica</label>
-            <input type="text" class="form-control" id="street">
+            <input type="text" class="form-control" id="street" formControlName="street">
           </div>
           <div class="mb-3">
             <label for="number" class="form-label">Nr domu</label>
-            <input type="text" class="form-control" id="number">
+            <input type="text" class="form-control" id="number" formControlName="number">
           </div>
           <div class="mb-3">
             <label for="city" class="form-label">Miasto</label>
-            <input type="text" class="form-control" id="city">
+            <input type="text" class="form-control" id="city" formControlName="city">
           </div>
           <div class="mb-3">
             <label for="zipCode" class="form-label">Kod pccztowy</label>

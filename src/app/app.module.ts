@@ -7,6 +7,7 @@ import { PatientComponent } from './patient/patient.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from "@angular/common/http";
 import {PatientService} from "./patient/patient.service";
+import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -17,8 +18,11 @@ import {PatientService} from "./patient/patient.service";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
+  exports: [],
   providers: [PatientService],
   bootstrap: [AppComponent]
 })
