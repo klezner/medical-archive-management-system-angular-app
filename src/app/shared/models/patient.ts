@@ -1,10 +1,13 @@
 export class Patient {
-  id: number = 0;
-  firstName: string = '';
-  lastName: string = '';
-  pesel: string = '';
-  street: string = '';
-  number: string = '';
-  city: string = '';
-  zipCode: string = '';
+  id?: number;
+  firstName?: string;
+  lastName?: string;
+  pesel?: string | null;
+  street?: string | null;
+  number?: string | null;
+  city?: string | null;
+  zipCode?: string | null;
+
+  constructor() {
+  }
 }

@@ -1,12 +1,5 @@
-<p>patient works!</p>
-<div class="container patient-container">
-  <div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">
-      Dodaj pacjenta
-    </button>
-  </div>
-  <hr>
+<app-dashboard></app-dashboard>
+<div class="container-fluid patient-container">
   <div class="row">
     <table class="table table-bordered table-hover">
       <thead>
@@ -50,53 +43,5 @@
   <div class="alert alert-warning" role="alert">
     <h4 class="alert-heading">NO PATIENTS!</h4>
     <p>No Patients were found.</p>
-  </div>
-</div>
-
-<!-- addPatientModal -->
-<div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addPatientModalLabel">Dodaj pacjenta</h5>
-        <button type="button" (click)="closeForm()" id="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="patientForm">
-          <div class="mb-3">
-            <label for="firstName" class="form-label">Imię</label>
-            <input type="text" class="form-control" id="firstName" formControlName="firstName">
-          </div>
-          <div class="mb-3">
-            <label for="lastName" class="form-label">Nazwisko</label>
-            <input type="text" class="form-control" id="lastName" formControlName="lastName">
-          </div>
-          <div class="mb-3">
-            <label for="pesel" class="form-label">PESEL</label>
-            <input type="text" class="form-control" id="pesel" formControlName="pesel">
-          </div>
-          <div class="mb-3">
-            <label for="street" class="form-label">Ulica</label>
-            <input type="text" class="form-control" id="street" formControlName="street">
-          </div>
-          <div class="mb-3">
-            <label for="number" class="form-label">Nr domu</label>
-            <input type="text" class="form-control" id="number" formControlName="number">
-          </div>
-          <div class="mb-3">
-            <label for="city" class="form-label">Miasto</label>
-            <input type="text" class="form-control" id="city" formControlName="city">
-          </div>
-          <div class="mb-3">
-            <label for="zipCode" class="form-label">Kod pocztowy</label>
-            <input type="text" class="form-control" id="zipCode" formControlName="zipCode">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="clearForm()" class="btn btn-warning mx-2">Wyczyść</button>
-        <button type="button" (click)="postPatient()" class="btn btn-primary mx-2">Zapisz</button>
-      </div>
-    </div>
   </div>
 </div>
