@@ -9,12 +9,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {PatientService} from "./shared/services/patient.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {LocationComponent} from './components/location/location.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientComponent,
-    DashboardComponent
+    DashboardComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
@@ -28,4 +30,5 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
   providers: [PatientService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
