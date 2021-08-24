@@ -9,7 +9,7 @@ import {Patient} from "../../shared/models/patient";
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  patients?: Patient[] | null;
+  patients: Patient[] | null = [];
 
   constructor(private patientService: PatientService) { }
 

@@ -9,16 +9,16 @@ import {Patient} from "../models/patient";
 })
 export class PatientService {
   private apiServerUrl = environment.localApiUrl;
-  private patientLocation = 'patient';
+  private patientPath = 'patient';
 
   constructor(private http:HttpClient) { }
 
   getPatients(): Observable<HttpResponse<Patient[]>> {
-    return this.http.get<Patient[]>(`/api/${this.patientLocation}`, {observe: 'response'});
+    return this.http.get<Patient[]>(`${this.apiServerUrl}/${this.patientPath}`, {observe: 'response'});
   }
 
   postPatient(patient: Patient): Observable<HttpResponse<Patient>> {
-    return this.http.post<Patient>(`/api/${this.patientLocation}`, patient, {
+    return this.http.post<Patient>(`${this.apiServerUrl}/${this.patientPath}`, patient, {
       observe: 'response',
       headers: {'Content-Type': 'application/json'}
     });

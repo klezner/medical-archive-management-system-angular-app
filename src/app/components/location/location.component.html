@@ -1,1 +1,41 @@
-<p>location works!</p>
+<app-dashboard></app-dashboard>
+<div class="container-fluid patient-container">
+  <div class="row">
+
+    <!-- Notification for no locations -->
+    <div *ngIf="locations?.length == 0 else noEmptyList" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">NO LOCATIONS!</h4>
+        <p>No locations were found.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- List of locations -->
+<ng-template #noEmptyList>
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">Piętro</th>
+      <th scope="col">Nr pokoju</th>
+      <th scope="col">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let location of locations">
+      <th scope="row">{{location.id}}</th>
+      <td>{{location.floor}}</td>
+      <td>{{location.roomNumber}}</td>
+      <td>
+        <div class="d-flex justify-content-end btn-group" role="group">
+          <button class="btn btn-info m-1">Info</button>
+          <button class="btn btn-warning m-1">Edytuj</button>
+          <button class="btn btn-danger m-1">Usuń</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
