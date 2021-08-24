@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PatientService} from "./patient.service";
+import {PatientService} from "../../shared/services/patient.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {Patient} from "./patient";
+import {Patient} from "../../shared/models/patient";
 import {FormGroup, FormControl} from "@angular/forms";
 
 @Component({
