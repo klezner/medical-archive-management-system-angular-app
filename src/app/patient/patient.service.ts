@@ -16,4 +16,8 @@ export class PatientService {
   getPatients(): Observable<HttpResponse<Patient[]>> {
     return this.http.get<Patient[]>(`${this.apiServerUrl}/${this.patientLocation}`, {observe: 'response'});
   }
+
+  postPatient(patient: Patient): Observable<HttpResponse<Patient>> {
+    return this.http.post<Patient>(`${this.apiServerUrl}/${this.patientLocation}`, patient, {observe: 'response', headers: {'Content-Type': 'application/json'}});
+  }
 }
