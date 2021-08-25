@@ -13,6 +13,7 @@ import {ArchiveCategoryComponent} from './components/archivecategory/archivecate
 import {PatientService} from "./shared/services/patient.service";
 import {LocationService} from "./shared/services/location.service";
 import {ArchiveCategoryService} from "./shared/services/archivecategory.service";
+import {WardComponent} from './components/ward/ward.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ArchiveCategoryService} from "./shared/services/archivecategory.service"
     PatientComponent,
     DashboardComponent,
     LocationComponent,
-    ArchiveCategoryComponent
+    ArchiveCategoryComponent,
+    WardComponent
   ],
   imports: [
     BrowserModule,
