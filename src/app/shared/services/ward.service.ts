@@ -17,4 +17,11 @@ export class WardService {
   getWards(): Observable<HttpResponse<Ward[]>> {
     return this.http.get<Ward[]>(`${this.apiServerUrl}/${this.locationPath}`, {observe: 'response'});
   }
+
+  postWard(ward: Ward): Observable<HttpResponse<Ward>> {
+    return this.http.post<Ward>(`${this.apiServerUrl}/${this.locationPath}`, ward, {
+      observe: 'response',
+      headers: {'Content-Type': 'application/json'}
+    });
+  }
 }

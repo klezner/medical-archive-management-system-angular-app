@@ -4,11 +4,44 @@
             data-bs-target="#addPatientModal">Dodaj Pacjenta
     </button>
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+            data-bs-target="#addWardModal">Dodaj Oddział
+    </button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
             data-bs-target="#addLocationModal">Dodaj Archiwum/Pomieszczenie
     </button>
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
             data-bs-target="#addArchiveCategoryModal">Dodaj Kategorię Archiwów
     </button>
+  </div>
+</div>
+
+<!-- addWardModal -->
+<div class="modal fade" id="addWardModal" tabindex="-1" aria-labelledby="addAWardModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addAWardModalLabel">Dodaj Oddział</h5>
+        <button type="button" id="closeAddWardModal" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="wardForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nazwa</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label for="abbreviation" class="form-label">Skrót</label>
+            <input type="text" class="form-control" id="abbreviation" formControlName="abbreviation">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="clearForm(wardForm)" class="btn btn-warning mx-2">Wyczyść</button>
+        <button type="button" (click)="postWard()" class="btn btn-primary mx-2">Zapisz</button>
+      </div>
+    </div>
   </div>
 </div>
 
