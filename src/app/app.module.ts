@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {PatientComponent} from './components/patient/patient.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from "@angular/common/http";
-import {PatientService} from "./shared/services/patient.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {LocationComponent} from './components/location/location.component';
@@ -29,7 +28,7 @@ import {ArchivecategoryComponent} from './components/archivecategory/archivecate
     ReactiveFormsModule
   ],
   exports: [],
-  providers: [PatientService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

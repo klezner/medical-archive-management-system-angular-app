@@ -1,1 +1,42 @@
 <p>archivecategory works!</p>
+<app-dashboard></app-dashboard>
+<div class="container-fluid archivecategory-container">
+  <div class="row">
+
+    <!-- Notification for no archive category -->
+    <div *ngIf="archiveCategories?.length == 0 else noEmptyList" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">NO ARCHIVE CATEGORIES!</h4>
+        <p>No archive categories were found.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- List of archive categories -->
+<ng-template #noEmptyList>
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">Kategoria</th>
+      <th scope="col">Lata przechowywania</th>
+      <th scope="col">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let archiveCategory of archiveCategories">
+      <th scope="row">{{archiveCategory.id}}</th>
+      <td>{{archiveCategory.categoryName}}</td>
+      <td>{{archiveCategory.storagePeriodYears}}</td>
+      <td>
+        <div class="d-flex justify-content-end btn-group" role="group">
+          <button class="btn btn-info m-1">Info</button>
+          <button class="btn btn-warning m-1">Edytuj</button>
+          <button class="btn btn-danger m-1">Usuń</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
