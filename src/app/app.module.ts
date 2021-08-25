@@ -10,13 +10,15 @@ import {PatientService} from "./shared/services/patient.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {LocationComponent} from './components/location/location.component';
+import {ArchivecategoryComponent} from './components/archivecategory/archivecategory.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientComponent,
     DashboardComponent,
-    LocationComponent
+    LocationComponent,
+    ArchivecategoryComponent
   ],
   imports: [
     BrowserModule,
