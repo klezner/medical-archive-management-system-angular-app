@@ -6,6 +6,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {LocationService} from "../../shared/services/location.service";
 import {Location} from "../../shared/models/location";
 import {Router} from "@angular/router";
+import {ArchiveCategory} from "../../shared/models/archivecategory";
+import {ArchiveCategoryService} from "../../shared/services/archivecategory.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +15,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  archiveCategory: ArchiveCategory = new ArchiveCategory();
+
+  archiveCategoryForm = new FormGroup({
+    categoryName: new FormControl(),
+    storagePeriodYears: new FormControl()
+  })
 
   location: Location = new Location();
 
@@ -33,10 +42,32 @@ export class DashboardComponent implements OnInit {
     zipCode: new FormControl()
   });
 
-  constructor(private router: Router, private patientService: PatientService, private locationService: LocationService) {
+  constructor(private router: Router,
+              private patientService: PatientService,
+              private locationService: LocationService,
+              private archiveCategoryService: ArchiveCategoryService
+  ) {
   }
 
   ngOnInit(): void {
+  }
+
+  postArchiveCategory(): void {
+    this.archiveCategory.categoryName = this.archiveCategoryForm.value.categoryName;
+    this.archiveCategory.storagePeriodYears = this.archiveCategoryForm.value.storagePeriodYears;
+
+    this.archiveCategoryService.postArchiveCategories(this.archiveCategory).subscribe(
+      (response: HttpResponse<Location>) => {
+        console.log(response.body);
+        alert('postArchiveCategory -> HttpStatus: ' + response.status + ' -> ' + response.body)
+        this.clearForm(this.archiveCategoryForm);
+        document.getElementById('closeAddArchiveCategoryModal')?.click();
+        this.router.navigate(['/archivecategories']);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
   }
 
   postLocation(): void {

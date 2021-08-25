@@ -17,4 +17,11 @@ export class ArchiveCategoryService {
   getArchiveCategories(): Observable<HttpResponse<ArchiveCategory[]>> {
     return this.http.get<ArchiveCategory[]>(`${this.apiServerUrl}/${this.locationPath}`, {observe: 'response'});
   }
+
+  postArchiveCategories(archiveCategory: ArchiveCategory): Observable<HttpResponse<ArchiveCategory>> {
+    return this.http.post<ArchiveCategory>(`${this.apiServerUrl}/${this.locationPath}`, archiveCategory, {
+      observe: 'response',
+      headers: {'Content-Type': 'application/json'}
+    });
+  }
 }

@@ -6,6 +6,39 @@
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
             data-bs-target="#addLocationModal">Dodaj Archiwum/Pomieszczenie
     </button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+            data-bs-target="#addArchiveCategoryModal">Dodaj Kategorię Archiwów
+    </button>
+  </div>
+</div>
+
+<!-- addArchiveCategoryModal -->
+<div class="modal fade" id="addArchiveCategoryModal" tabindex="-1" aria-labelledby="addArchiveCategoryModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addArchiveCategoryModalLabel">Dodaj Archiwum/Pomieszczenie</h5>
+        <button type="button" id="closeAddArchiveCategoryModal" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="archiveCategoryForm">
+          <div class="mb-3">
+            <label for="categoryName" class="form-label">Kategoria</label>
+            <input type="text" class="form-control" id="categoryName" formControlName="categoryName">
+          </div>
+          <div class="mb-3">
+            <label for="storagePeriodYears" class="form-label">Lata przechowywania</label>
+            <input type="text" class="form-control" id="storagePeriodYears" formControlName="storagePeriodYears">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="clearForm(archiveCategoryForm)" class="btn btn-warning mx-2">Wyczyść</button>
+        <button type="button" (click)="postArchiveCategory()" class="btn btn-primary mx-2">Zapisz</button>
+      </div>
+    </div>
   </div>
 </div>
 
