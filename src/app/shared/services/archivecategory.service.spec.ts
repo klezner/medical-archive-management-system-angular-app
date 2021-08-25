@@ -1,13 +1,13 @@
 import {TestBed} from '@angular/core/testing';
 
-import {ArchivecategoryService} from './archivecategory.service';
+import {ArchiveCategoryService} from './archivecategory.service';
 
 describe('ArchivecategoryService', () => {
-  let service: ArchivecategoryService;
+  let service: ArchiveCategoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ArchivecategoryService);
+    service = TestBed.inject(ArchiveCategoryService);
   });
 
   it('should be created', () => {

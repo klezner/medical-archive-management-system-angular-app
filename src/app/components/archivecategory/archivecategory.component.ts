@@ -8,7 +8,7 @@ import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
   templateUrl: './archivecategory.component.html',
   styleUrls: ['./archivecategory.component.css']
 })
-export class ArchivecategoryComponent implements OnInit {
+export class ArchiveCategoryComponent implements OnInit {
   archiveCategories: ArchiveCategory[] | null = [];
 
   constructor(private archiveCategoryService: ArchiveCategoryService) {

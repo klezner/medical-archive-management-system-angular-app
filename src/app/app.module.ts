@@ -9,7 +9,10 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {LocationComponent} from './components/location/location.component';
-import {ArchivecategoryComponent} from './components/archivecategory/archivecategory.component';
+import {ArchiveCategoryComponent} from './components/archivecategory/archivecategory.component';
+import {PatientService} from "./shared/services/patient.service";
+import {LocationService} from "./shared/services/location.service";
+import {ArchiveCategoryService} from "./shared/services/archivecategory.service";
 
 @NgModule({
   declarations: [
@@ -17,7 +20,7 @@ import {ArchivecategoryComponent} from './components/archivecategory/archivecate
     PatientComponent,
     DashboardComponent,
     LocationComponent,
-    ArchivecategoryComponent
+    ArchiveCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,11 @@ import {ArchivecategoryComponent} from './components/archivecategory/archivecate
     ReactiveFormsModule
   ],
   exports: [],
-  providers: [],
+  providers: [
+    PatientService,
+    LocationService,
+    ArchiveCategoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
