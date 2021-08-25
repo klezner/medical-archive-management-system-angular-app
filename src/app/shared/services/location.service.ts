@@ -17,4 +17,11 @@ export class LocationService {
   getLocations(): Observable<HttpResponse<Location[]>> {
     return this.http.get<Location[]>(`${this.apiServerUrl}/${this.locationPath}`, {observe: 'response'});
   }
+
+  postLocation(location: Location): Observable<HttpResponse<Location>> {
+    return this.http.post<Location>(`${this.apiServerUrl}/${this.locationPath}`, location, {
+      observe: 'response',
+      headers: {'Content-Type': 'application/json'}
+    });
+  }
 }

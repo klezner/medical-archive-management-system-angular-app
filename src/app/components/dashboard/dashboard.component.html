@@ -3,6 +3,39 @@
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
             data-bs-target="#addPatientModal">Dodaj pacjenta
     </button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+            data-bs-target="#addLocationModal">Dodaj archiwum
+    </button>
+  </div>
+</div>
+
+<!-- addLocationModal -->
+<div class="modal fade" id="addLocationModal" tabindex="-1" aria-labelledby="addLocationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addLocationModalLabel">Dodaj archiwum</h5>
+        <button type="button" (click)="closeForm(locationForm)" id="closeModal" class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="locationForm">
+          <div class="mb-3">
+            <label for="floor" class="form-label">Piętro</label>
+            <input type="text" class="form-control" id="floor" formControlName="floor">
+          </div>
+          <div class="mb-3">
+            <label for="roomNumber" class="form-label">Nr pokoju</label>
+            <input type="text" class="form-control" id="roomNumber" formControlName="roomNumber">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="clearForm(locationForm)" class="btn btn-warning mx-2">Wyczyść</button>
+        <button type="button" (click)="postLocation()" class="btn btn-primary mx-2">Zapisz</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -12,7 +45,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="addPatientModalLabel">Dodaj pacjenta</h5>
-        <button type="button" (click)="closeForm()" id="closeModal" class="btn-close" data-bs-dismiss="modal"
+        <button type="button" (click)="closeForm(patientForm)" id="closeModal" class="btn-close" data-bs-dismiss="modal"
                 aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -48,7 +81,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" (click)="clearForm()" class="btn btn-warning mx-2">Wyczyść</button>
+        <button type="button" (click)="clearForm(patientForm)" class="btn btn-warning mx-2">Wyczyść</button>
         <button type="button" (click)="postPatient()" class="btn btn-primary mx-2">Zapisz</button>
       </div>
     </div>
