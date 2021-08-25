@@ -1,10 +1,10 @@
 <div class="d-flex justify-content-center flex-wrap align-items-center pt-3 pb-2 mb-3 border">
   <div class="btn-toolbar mb-2">
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
-            data-bs-target="#addPatientModal">Dodaj pacjenta
+            data-bs-target="#addPatientModal">Dodaj Pacjenta
     </button>
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
-            data-bs-target="#addLocationModal">Dodaj archiwum
+            data-bs-target="#addLocationModal">Dodaj Archiwum/Pomieszczenie
     </button>
   </div>
 </div>
@@ -14,9 +14,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addLocationModalLabel">Dodaj archiwum</h5>
-        <button type="button" (click)="closeForm(locationForm)" id="closeModal" class="btn-close"
-                data-bs-dismiss="modal"
+        <h5 class="modal-title" id="addLocationModalLabel">Dodaj Archiwum/Pomieszczenie</h5>
+        <button type="button" id="closeAddLocationModal" class="btn-close" data-bs-dismiss="modal"
                 aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -44,8 +43,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addPatientModalLabel">Dodaj pacjenta</h5>
-        <button type="button" (click)="closeForm(patientForm)" id="closeModal" class="btn-close" data-bs-dismiss="modal"
+        <h5 class="modal-title" id="addPatientModalLabel">Dodaj Pacjenta</h5>
+        <button type="button" id="closeAddPatientModal" class="btn-close" data-bs-dismiss="modal"
                 aria-label="Close"></button>
       </div>
       <div class="modal-body">

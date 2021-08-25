@@ -5,6 +5,7 @@ import {Patient} from "../../shared/models/patient";
 import {FormControl, FormGroup} from "@angular/forms";
 import {LocationService} from "../../shared/services/location.service";
 import {Location} from "../../shared/models/location";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -32,7 +33,7 @@ export class DashboardComponent implements OnInit {
     zipCode: new FormControl()
   });
 
-  constructor(private patientService: PatientService, private locationService: LocationService) {
+  constructor(private router: Router, private patientService: PatientService, private locationService: LocationService) {
   }
 
   ngOnInit(): void {
@@ -46,9 +47,9 @@ export class DashboardComponent implements OnInit {
       (response: HttpResponse<Location>) => {
         console.log(response.body);
         alert('postLocations -> HttpStatus: ' + response.status + ' -> ' + response.body)
-        this.closeForm(this.locationForm);
-        document.getElementById('closeModal')?.click();
-        console.log(document.referrer);
+        this.clearForm(this.locationForm);
+        document.getElementById('closeAddLocationModal')?.click();
+        this.router.navigate(['/locations']);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -69,8 +70,9 @@ export class DashboardComponent implements OnInit {
       (response: HttpResponse<Patient>) => {
         console.log(response.body);
         alert('postPatients -> HttpStatus: ' + response.status + ' -> ' + response.body)
-        this.closeForm(this.patientForm);
-        document.getElementById('closeModal')?.click();
+        this.clearForm(this.patientForm);
+        document.getElementById('closeAddPatientModal')?.click();
+        this.router.navigate(['/patients']);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -78,12 +80,8 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  closeForm(selectedForm: FormGroup): void {
-    selectedForm.reset();
-    document.getElementById('closeModal')?.click();
-  }
-
   clearForm(selectedForm: FormGroup): void {
     selectedForm.reset();
   }
+
 }

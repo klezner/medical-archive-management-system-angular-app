@@ -9,45 +9,45 @@
         <p>No patients were found.</p>
       </div>
     </div>
-
-    <!-- List of patients -->
-    <ng-template #noEmptyList>
-      <table class="table table-bordered table-hover">
-        <thead>
-        <tr class="table-dark">
-          <th scope="col">#</th>
-          <th scope="col">Imię</th>
-          <th scope="col">Nazwisko</th>
-          <th scope="col">PESEL</th>
-          <th scope="col">Ulica</th>
-          <th scope="col">Nr domu</th>
-          <th scope="col">Miasto</th>
-          <th scope="col">Kod pocztowy</th>
-          <th scope="col">Akcje</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let patient of patients">
-          <th scope="row">{{patient.id}}</th>
-          <td>{{patient.firstName}}</td>
-          <td>{{patient.lastName}}</td>
-          <td>{{patient.pesel}}</td>
-          <td>{{patient.street}}</td>
-          <td>{{patient.number}}</td>
-          <td>{{patient.city}}</td>
-          <td>{{patient.zipCode}}</td>
-          <td>
-            <div class="d-flex justify-content-end btn-group" role="group">
-              <button class="btn btn-info m-1">Info</button>
-              <button class="btn btn-warning m-1">Edytuj</button>
-              <button class="btn btn-danger m-1">Usuń</button>
-            </div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </ng-template>
   </div>
 </div>
+
+<!-- List of patients -->
+<ng-template #noEmptyList>
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">Imię</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">PESEL</th>
+      <th scope="col">Ulica</th>
+      <th scope="col">Nr domu</th>
+      <th scope="col">Miasto</th>
+      <th scope="col">Kod pocztowy</th>
+      <th scope="col">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let patient of patients">
+      <th scope="row">{{patient.id}}</th>
+      <td>{{patient.firstName}}</td>
+      <td>{{patient.lastName}}</td>
+      <td>{{patient.pesel}}</td>
+      <td>{{patient.street}}</td>
+      <td>{{patient.number}}</td>
+      <td>{{patient.city}}</td>
+      <td>{{patient.zipCode}}</td>
+      <td>
+        <div class="d-flex justify-content-end btn-group" role="group">
+          <button class="btn btn-info m-1">Info</button>
+          <button class="btn btn-warning m-1">Edytuj</button>
+          <button class="btn btn-danger m-1">Usuń</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
 
 
