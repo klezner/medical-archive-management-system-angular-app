@@ -10,6 +10,9 @@ import {ArchiveCategory} from "../../shared/models/archivecategory";
 import {ArchiveCategoryService} from "../../shared/services/archivecategory.service";
 import {WardService} from "../../shared/services/ward.service";
 import {Ward} from "../../shared/models/ward";
+import {StaffRequest} from "../../shared/models/staff-request";
+import {StaffService} from "../../shared/services/staff.service";
+import {StaffResponse} from "../../shared/models/staff-response";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +20,15 @@ import {Ward} from "../../shared/models/ward";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  staff: StaffRequest = new StaffRequest();
+
+  staffForm = new FormGroup({
+    name: new FormControl(),
+    surname: new FormControl(),
+    role: new FormControl(),
+    wardId: new FormControl()
+  });
 
   ward: Ward = new Ward();
 
@@ -55,11 +67,32 @@ export class DashboardComponent implements OnInit {
               private patientService: PatientService,
               private locationService: LocationService,
               private archiveCategoryService: ArchiveCategoryService,
-              private wardService: WardService
+              private wardService: WardService,
+              private staffService: StaffService
   ) {
   }
 
   ngOnInit(): void {
+  }
+
+  postStaff(): void {
+    this.staff.name = this.staffForm.value.name;
+    this.staff.surname = this.staffForm.value.surname;
+    this.staff.role = this.staffForm.value.role;
+    this.staff.wardId = this.staffForm.value.wardId;
+
+    this.staffService.postStaff(this.staff).subscribe(
+      (response: HttpResponse<StaffResponse>) => {
+        console.log(response.body);
+        alert('postStaff -> HttpStatus: ' + response.status + ' -> ' + response.body);
+        this.clearForm(this.staffForm);
+        document.getElementById('closeAddStaffModal')?.click();
+        this.router.navigate(['/staff']);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
   }
 
   postWard(): void {

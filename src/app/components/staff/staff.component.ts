@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Staff} from "../../shared/models/staff";
+import {StaffResponse} from "../../shared/models/staff-response";
 import {StaffService} from "../../shared/services/staff.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
@@ -9,7 +9,7 @@ import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
   styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
-  staff: Staff[] | null = [];
+  staff: StaffResponse[] | null = [];
 
   constructor(private staffService: StaffService) {
   }
@@ -20,7 +20,7 @@ export class StaffComponent implements OnInit {
 
   getStaff(): void {
     this.staffService.getStaff().subscribe(
-      (response: HttpResponse<Staff[]>) => {
+      (response: HttpResponse<StaffResponse[]>) => {
         this.staff = response.body;
         console.log('getStaff -> HttpStatus: ' + response.status + ' -> ' + response.body);
       },

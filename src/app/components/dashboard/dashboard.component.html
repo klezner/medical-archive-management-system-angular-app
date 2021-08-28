@@ -7,6 +7,9 @@
             data-bs-target="#addWardModal">Dodaj Oddział
     </button>
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+            data-bs-target="#addStaffModal">Dodaj Pracownika
+    </button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
             data-bs-target="#addLocationModal">Dodaj Archiwum/Pomieszczenie
     </button>
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
@@ -15,13 +18,51 @@
   </div>
 </div>
 
-<!-- addWardModal -->
-<div class="modal fade" id="addWardModal" tabindex="-1" aria-labelledby="addAWardModalLabel"
+<!-- addStaffModal -->
+<div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModalLabel"
      aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addAWardModalLabel">Dodaj Oddział</h5>
+        <h5 class="modal-title" id="addStaffModalLabel">Dodaj Pracownika</h5>
+        <button type="button" id="closeAddStaffModal" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="staffForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Imię</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label for="surname" class="form-label">Nazwisko</label>
+            <input type="text" class="form-control" id="surname" formControlName="surname">
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Rola</label>
+            <input type="text" class="form-control" id="role" formControlName="role">
+          </div>
+          <div class="mb-3">
+            <label for="wardId" class="form-label">Id Oddziału</label>
+            <input type="number" class="form-control" id="wardId" formControlName="wardId">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="clearForm(staffForm)" class="btn btn-warning mx-2">Wyczyść</button>
+        <button type="button" (click)="postStaff()" class="btn btn-primary mx-2">Zapisz</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- addWardModal -->
+<div class="modal fade" id="addWardModal" tabindex="-1" aria-labelledby="addWardModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addWardModalLabel">Dodaj Oddział</h5>
         <button type="button" id="closeAddWardModal" class="btn-close" data-bs-dismiss="modal"
                 aria-label="Close"></button>
       </div>

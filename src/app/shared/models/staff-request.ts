@@ -1,9 +1,9 @@
-export class Staff {
+export class StaffRequest {
   id?: number;
   name?: string;
   surname?: string;
   role?: string;
-  wardAbbreviation?: string;
+  wardId?: number;
 
   constructor() {
   }
