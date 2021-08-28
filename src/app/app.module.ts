@@ -15,6 +15,7 @@ import {LocationService} from "./shared/services/location.service";
 import {ArchiveCategoryService} from "./shared/services/archivecategory.service";
 import {WardComponent} from './components/ward/ward.component';
 import {HospitalizationComponent} from './components/hospitalization/hospitalization.component';
+import {StaffComponent} from './components/staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HospitalizationComponent} from './components/hospitalization/hospitaliza
     LocationComponent,
     ArchiveCategoryComponent,
     WardComponent,
-    HospitalizationComponent
+    HospitalizationComponent,
+    StaffComponent
   ],
   imports: [
     BrowserModule,

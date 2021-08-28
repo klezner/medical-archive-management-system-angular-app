@@ -1,0 +1,45 @@
+<app-dashboard></app-dashboard>
+<div class="container-fluid staff-container">
+  <div class="row">
+
+    <!-- Notification for no staff -->
+    <div *ngIf="staff?.length == 0 else noEmptyList" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">NO STAFF!</h4>
+        <p>No staff were found.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- List of staff -->
+<ng-template #noEmptyList>
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">Imię</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Rola</th>
+      <th scope="col">Oddział</th>
+      <th scope="col">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of staff">
+      <th scope="row">{{employee.id}}</th>
+      <td>{{employee.name}}</td>
+      <td>{{employee.surname}}</td>
+      <td>{{employee.role}}</td>
+      <td>{{employee.wardAbbreviation}}</td>
+      <td>
+        <div class="d-flex justify-content-end btn-group" role="group">
+          <button class="btn btn-info m-1">Info</button>
+          <button class="btn btn-warning m-1">Edytuj</button>
+          <button class="btn btn-danger m-1">Usuń</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
