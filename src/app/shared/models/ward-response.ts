@@ -1,4 +1,4 @@
-export class Ward {
+export class WardResponse {
   id?: number;
   name?: string;
   abbreviation?: string;

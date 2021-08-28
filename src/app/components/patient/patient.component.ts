@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PatientService} from "../../shared/services/patient.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {Patient} from "../../shared/models/patient";
+import {PatientResponse} from "../../shared/models/patient-response";
 
 @Component({
   selector: 'app-patient',
@@ -9,7 +9,7 @@ import {Patient} from "../../shared/models/patient";
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  patients: Patient[] | null = [];
+  patients: PatientResponse[] | null = [];
 
   constructor(private patientService: PatientService) { }
 
@@ -19,7 +19,7 @@ export class PatientComponent implements OnInit {
 
   getPatients(): void {
     this.patientService.getPatients().subscribe(
-      (response: HttpResponse<Patient[]>) => {
+      (response: HttpResponse<PatientResponse[]>) => {
         this.patients = response.body;
         console.log('getPatients -> HttpStatus: ' + response.status + ' -> ' + response.body);
       },

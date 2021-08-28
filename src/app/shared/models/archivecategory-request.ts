@@ -1,4 +1,4 @@
-export class ArchiveCategory {
+export class ArchivecategoryRequest {
   id?: number;
   categoryName?: string;
   storagePeriodYears?: number;

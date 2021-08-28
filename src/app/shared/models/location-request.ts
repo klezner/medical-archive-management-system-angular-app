@@ -1,4 +1,4 @@
-export class Location {
+export class LocationRequest {
   id?: number;
   roomNumber?: string;
   floor?: number;

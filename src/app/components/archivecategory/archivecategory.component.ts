@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ArchiveCategory} from "../../shared/models/archivecategory";
+import {ArchivecategoryRequest} from "../../shared/models/archivecategory-request";
 import {ArchiveCategoryService} from "../../shared/services/archivecategory.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
@@ -9,7 +9,7 @@ import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
   styleUrls: ['./archivecategory.component.css']
 })
 export class ArchiveCategoryComponent implements OnInit {
-  archiveCategories: ArchiveCategory[] | null = [];
+  archiveCategories: ArchivecategoryRequest[] | null = [];
 
   constructor(private archiveCategoryService: ArchiveCategoryService) {
   }
@@ -20,7 +20,7 @@ export class ArchiveCategoryComponent implements OnInit {
 
   getArchiveCategories(): void {
     this.archiveCategoryService.getArchiveCategories().subscribe(
-      (response: HttpResponse<ArchiveCategory[]>) => {
+      (response: HttpResponse<ArchivecategoryRequest[]>) => {
         this.archiveCategories = response.body;
         console.log('getArchiveCategories -> HttpStatus: ' + response.status + ' -> ' + response.body);
       },

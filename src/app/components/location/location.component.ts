@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from "../../shared/models/location";
+import {LocationResponse} from "../../shared/models/location-response";
 import {LocationService} from "../../shared/services/location.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
@@ -9,7 +9,7 @@ import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-  locations: Location[] | null = [];
+  locations: LocationResponse[] | null = [];
 
   constructor(private locationService: LocationService) {
   }
@@ -20,7 +20,7 @@ export class LocationComponent implements OnInit {
 
   getLocations(): void {
     this.locationService.getLocations().subscribe(
-      (response: HttpResponse<Location[]>) => {
+      (response: HttpResponse<LocationResponse[]>) => {
         this.locations = response.body;
         console.log('getLocations -> HttpStatus: ' + response.status + ' -> ' + response.body);
       },

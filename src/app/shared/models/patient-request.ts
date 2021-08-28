@@ -1,4 +1,4 @@
-export class Patient {
+export class PatientRequest {
   id?: number;
   firstName?: string;
   lastName?: string;

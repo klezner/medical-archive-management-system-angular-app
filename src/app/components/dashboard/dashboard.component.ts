@@ -1,18 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {PatientService} from "../../shared/services/patient.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {Patient} from "../../shared/models/patient";
+import {PatientResponse} from "../../shared/models/patient-response";
 import {FormControl, FormGroup} from "@angular/forms";
 import {LocationService} from "../../shared/services/location.service";
-import {Location} from "../../shared/models/location";
+import {LocationResponse} from "../../shared/models/location-response";
 import {Router} from "@angular/router";
-import {ArchiveCategory} from "../../shared/models/archivecategory";
+import {ArchivecategoryRequest} from "../../shared/models/archivecategory-request";
 import {ArchiveCategoryService} from "../../shared/services/archivecategory.service";
 import {WardService} from "../../shared/services/ward.service";
-import {Ward} from "../../shared/models/ward";
+import {WardRequest} from "../../shared/models/ward-request";
 import {StaffRequest} from "../../shared/models/staff-request";
 import {StaffService} from "../../shared/services/staff.service";
 import {StaffResponse} from "../../shared/models/staff-response";
+import {LocationRequest} from "../../shared/models/location-request";
+import {PatientRequest} from "../../shared/models/patient-request";
+import {WardResponse} from "../../shared/models/ward-response";
+import {ArchiveCategoryResponse} from "../../shared/models/archivecategory-response";
 
 @Component({
   selector: 'app-dashboard',
@@ -30,28 +34,28 @@ export class DashboardComponent implements OnInit {
     wardId: new FormControl()
   });
 
-  ward: Ward = new Ward();
+  ward: WardRequest = new WardRequest();
 
   wardForm = new FormGroup({
     name: new FormControl(),
     abbreviation: new FormControl()
   });
 
-  archiveCategory: ArchiveCategory = new ArchiveCategory();
+  archiveCategory: ArchivecategoryRequest = new ArchivecategoryRequest();
 
   archiveCategoryForm = new FormGroup({
     categoryName: new FormControl(),
     storagePeriodYears: new FormControl()
   });
 
-  location: Location = new Location();
+  location: LocationRequest = new LocationRequest();
 
   locationForm = new FormGroup({
     floor: new FormControl(),
     roomNumber: new FormControl()
   });
 
-  patient: Patient = new Patient();
+  patient: PatientRequest = new PatientRequest();
 
   patientForm = new FormGroup({
     firstName: new FormControl(),
@@ -100,7 +104,7 @@ export class DashboardComponent implements OnInit {
     this.ward.abbreviation = this.wardForm.value.abbreviation;
 
     this.wardService.postWard(this.ward).subscribe(
-      (response: HttpResponse<Ward>) => {
+      (response: HttpResponse<WardResponse>) => {
         console.log(response.body);
         alert('postWard -> HttpStatus: ' + response.status + ' -> ' + response.body);
         this.clearForm(this.wardForm);
@@ -118,7 +122,7 @@ export class DashboardComponent implements OnInit {
     this.archiveCategory.storagePeriodYears = this.archiveCategoryForm.value.storagePeriodYears;
 
     this.archiveCategoryService.postArchiveCategory(this.archiveCategory).subscribe(
-      (response: HttpResponse<Location>) => {
+      (response: HttpResponse<ArchiveCategoryResponse>) => {
         console.log(response.body);
         alert('postArchiveCategory -> HttpStatus: ' + response.status + ' -> ' + response.body);
         this.clearForm(this.archiveCategoryForm);
@@ -136,7 +140,7 @@ export class DashboardComponent implements OnInit {
     this.location.roomNumber = this.locationForm.value.roomNumber;
 
     this.locationService.postLocation(this.location).subscribe(
-      (response: HttpResponse<Location>) => {
+      (response: HttpResponse<LocationResponse>) => {
         console.log(response.body);
         alert('postLocations -> HttpStatus: ' + response.status + ' -> ' + response.body);
         this.clearForm(this.locationForm);
@@ -159,7 +163,7 @@ export class DashboardComponent implements OnInit {
     this.patient.zipCode = this.patientForm.value.zipCode;
 
     this.patientService.postPatient(this.patient).subscribe(
-      (response: HttpResponse<Patient>) => {
+      (response: HttpResponse<PatientResponse>) => {
         console.log(response.body);
         alert('postPatients -> HttpStatus: ' + response.status + ' -> ' + response.body);
         this.clearForm(this.patientForm);

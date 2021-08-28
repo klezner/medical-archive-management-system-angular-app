@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Ward} from "../models/ward";
+import {WardRequest} from "../models/ward-request";
+import {WardResponse} from "../models/ward-response";
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,12 @@ export class WardService {
   constructor(private http: HttpClient) {
   }
 
-  getWards(): Observable<HttpResponse<Ward[]>> {
-    return this.http.get<Ward[]>(`${this.apiServerUrl}/${this.locationPath}`, {observe: 'response'});
+  getWards(): Observable<HttpResponse<WardResponse[]>> {
+    return this.http.get<WardResponse[]>(`${this.apiServerUrl}/${this.locationPath}`, {observe: 'response'});
   }
 
-  postWard(ward: Ward): Observable<HttpResponse<Ward>> {
-    return this.http.post<Ward>(`${this.apiServerUrl}/${this.locationPath}`, ward, {
+  postWard(ward: WardRequest): Observable<HttpResponse<WardResponse>> {
+    return this.http.post<WardResponse>(`${this.apiServerUrl}/${this.locationPath}`, ward, {
       observe: 'response',
       headers: {'Content-Type': 'application/json'}
     });
