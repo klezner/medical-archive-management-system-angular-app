@@ -17,6 +17,9 @@ import {WardComponent} from './components/ward/ward.component';
 import {HospitalizationComponent} from './components/hospitalization/hospitalization.component';
 import {StaffComponent} from './components/staff/staff.component';
 import { FolderComponent } from './components/folder/folder.component';
+import {WardService} from "./shared/services/ward.service";
+import {StaffService} from "./shared/services/staff.service";
+import {FolderService} from "./shared/services/folder.service";
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { FolderComponent } from './components/folder/folder.component';
   providers: [
     PatientService,
     LocationService,
-    ArchiveCategoryService
+    ArchiveCategoryService,
+    WardService,
+    StaffService,
+    FolderService
   ],
   bootstrap: [AppComponent]
 })

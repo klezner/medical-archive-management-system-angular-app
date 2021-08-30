@@ -5,13 +5,15 @@ import {LocationComponent} from "./components/location/location.component";
 import {ArchiveCategoryComponent} from "./components/archivecategory/archivecategory.component";
 import {WardComponent} from "./components/ward/ward.component";
 import {StaffComponent} from "./components/staff/staff.component";
+import {FolderComponent} from "./components/folder/folder.component";
 
 const routes: Routes = [
   {path: 'patients', component: PatientComponent},
   {path: 'locations', component: LocationComponent},
   {path: 'archivecategories', component: ArchiveCategoryComponent},
   {path: 'wards', component: WardComponent},
-  {path: 'staff', component: StaffComponent}
+  {path: 'staff', component: StaffComponent},
+  {path: 'folders', component: FolderComponent}
 ];
 
 @NgModule({

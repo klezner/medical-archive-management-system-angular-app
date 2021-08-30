@@ -1,1 +1,67 @@
-<p>folder works!</p>
+<app-dashboard></app-dashboard>
+<div class="container-fluid folder-container">
+  <div class="row">
+
+    <!-- Notification for no folders -->
+    <div *ngIf="folders?.length == 0 else noEmptyList" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">NO FOLDERS!</h4>
+        <p>No folders were found.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- List of folders -->
+<ng-template #noEmptyList>
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">Rok</th>
+      <th scope="col">Nr teczki</th>
+      <th scope="col">Ilość teczek</th>
+      <th scope="col">Typ</th>
+      <th scope="col">Status</th>
+      <th scope="col">Kategoria</th>
+      <th scope="col">Lata przechowywania</th>
+      <th scope="col">Nr pokoju</th>
+      <th scope="col">Piętro</th>
+      <th scope="col">Hospitalizacja od</th>
+      <th scope="col">Hospitalizacja do</th>
+      <th scope="col">Oddział</th>
+      <th scope="col">Imię</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Pesel</th>
+      <th scope="col">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let folder of folders">
+      <th scope="row">{{folder.id}}</th>
+      <td>{{folder.year}}</td>
+      <td>{{folder.ledgerId}}</td>
+      <td>{{folder.numberOfFolders}}</td>
+      <td>{{folder.typeLabel}}</td>
+      <td>{{folder.statusLabel}}</td>
+      <td>{{folder.categoryName}}</td>
+      <td>{{folder.storagePeriodYears}}</td>
+      <td>{{folder.roomNumber}}</td>
+      <td>{{folder.floor}}</td>
+      <td>{{folder.hospitalizationFrom}}</td>
+      <td>{{folder.hospitalizationTo}}</td>
+      <td>{{folder.wardAbbreviation}}</td>
+      <td>{{folder.firstName}}</td>
+      <td>{{folder.lastName}}</td>
+      <td>{{folder.pesel}}</td>
+      <td>
+        <div class="d-flex justify-content-end btn-group" role="group">
+          <button class="btn btn-info m-1">Info</button>
+          <button class="btn btn-warning m-1">Edytuj</button>
+          <button class="btn btn-danger m-1">Usuń</button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>

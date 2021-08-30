@@ -28,5 +28,5 @@ export class StaffComponent implements OnInit {
         alert(error.message);
       }
     )
-  }
+  };
 }
