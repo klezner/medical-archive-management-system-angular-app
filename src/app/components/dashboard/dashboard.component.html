@@ -15,6 +15,69 @@
     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
             data-bs-target="#addArchiveCategoryModal">Dodaj Kategorię Archiwów
     </button>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+            data-bs-target="#addFolderModal">Dodaj Teczkę
+    </button>
+  </div>
+</div>
+
+<!-- addFolderModal -->
+<div class="modal fade" id="addFolderModal" tabindex="-1" aria-labelledby="addFolderModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addFolderModalLabel">Dodaj Teczkę</h5>
+        <button type="button" id="closeAddFolderModal" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="folderForm">
+          <div class="mb-3">
+            <label for="year" class="form-label">Rok</label>
+            <input type="number" class="form-control" id="year" formControlName="year">
+          </div>
+          <div class="mb-3">
+            <label for="ledgerId" class="form-label">Nr</label>
+            <input type="number" class="form-control" id="ledgerId" formControlName="ledgerId">
+          </div>
+          <div class="mb-3">
+            <label for="numberOfFolders" class="form-label">Ilość</label>
+            <input type="number" class="form-control" id="numberOfFolders" formControlName="numberOfFolders">
+          </div>
+          <div class="mb-3">
+            <label for="typeLabel" class="form-label">Typ</label>
+            <input type="text" class="form-control" id="typeLabel" formControlName="typeLabel">
+          </div>
+          <div class="mb-3">
+            <label for="statusLabel" class="form-label">Status</label>
+            <input type="text" class="form-control" id="statusLabel" formControlName="statusLabel">
+          </div>
+          <div class="mb-3">
+            <label for="archiveCategoryId" class="form-label">Id kategorii archiwów</label>
+            <input type="number" class="form-control" id="archiveCategoryId" formControlName="archiveCategoryId">
+          </div>
+          <div class="mb-3">
+            <label for="locationId" class="form-label">Id archiwum/pomieszczenia</label>
+            <input type="number" class="form-control" id="locationId" formControlName="locationId">
+          </div>
+          <div class="mb-3">
+            <label for="hospitalizationId" class="form-label">Id hospitalizacji</label>
+            <input type="number" class="form-control" id="hospitalizationId" formControlName="hospitalizationId">
+          </div>
+          <div class="mb-3">
+            <label for="patientId" class="form-label">Id pacjenta</label>
+            <input type="number" class="form-control" id="patientId" formControlName="patientId">
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="clearForm(folderForm)" class="btn btn-warning mx-2">Wyczyść</button>
+        <button type="button" (click)="postFolder()" class="btn btn-primary mx-2">Zapisz</button>
+      </div>
+    </div>
   </div>
 </div>
 

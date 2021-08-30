@@ -17,6 +17,9 @@ import {LocationRequest} from "../../shared/models/location-request";
 import {PatientRequest} from "../../shared/models/patient-request";
 import {WardResponse} from "../../shared/models/ward-response";
 import {ArchiveCategoryResponse} from "../../shared/models/archivecategory-response";
+import {FolderRequest} from "../../shared/models/folder-request";
+import {FolderService} from "../../shared/services/folder.service";
+import {FolderResponse} from "../../shared/models/folder-response";
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +27,21 @@ import {ArchiveCategoryResponse} from "../../shared/models/archivecategory-respo
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  folder: FolderRequest = new FolderRequest();
+
+  folderForm = new FormGroup({
+    id: new FormControl(),
+    year: new FormControl(),
+    ledgerId: new FormControl(),
+    numberOfFolders: new FormControl(),
+    typeLabel: new FormControl(),
+    statusLabel: new FormControl(),
+    archiveCategoryId: new FormControl(),
+    locationId: new FormControl(),
+    hospitalizationId: new FormControl(),
+    patientId: new FormControl()
+  });
 
   staff: StaffRequest = new StaffRequest();
 
@@ -72,11 +90,37 @@ export class DashboardComponent implements OnInit {
               private locationService: LocationService,
               private archiveCategoryService: ArchiveCategoryService,
               private wardService: WardService,
-              private staffService: StaffService
+              private staffService: StaffService,
+              private folderService: FolderService
   ) {
   }
 
   ngOnInit(): void {
+  }
+
+  postFolder(): void {
+    this.folder.year = this.folderForm.value.year;
+    this.folder.ledgerId = this.folderForm.value.ledgerId;
+    this.folder.numberOfFolders = this.folderForm.value.numberOfFolders;
+    this.folder.typeLabel = this.folderForm.value.typeLabel;
+    this.folder.statusLabel = this.folderForm.value.statusLabel;
+    this.folder.archiveCategoryId = this.folderForm.value.archiveCategoryId;
+    this.folder.locationId = this.folderForm.value.locationId;
+    this.folder.hospitalizationId = this.folderForm.value.hospitalizationId;
+    this.folder.patientId = this.folderForm.value.patientId;
+
+    this.folderService.postFolder(this.folder).subscribe(
+      (response: HttpResponse<FolderResponse>) => {
+        console.log(response.body);
+        alert('postFolder -> HttpStatus: ' + response.status + ' -> ' + response.body);
+        this.clearForm(this.folderForm);
+        document.getElementById('closeAddFolderModal')?.click();
+        this.router.navigate(['/folders']);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
   }
 
   postStaff(): void {
